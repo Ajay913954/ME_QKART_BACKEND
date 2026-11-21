@@ -1,3 +1,4 @@
+import { LogoutOutlined, CompassOutlined, UserOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React from "react";
 import "./Header.css";
@@ -22,56 +23,76 @@ export default class Header extends React.Component {
   logout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("token");
+    localStorage.removeItem("balance");
+    localStorage.removeItem("email");
+    localStorage.removeItem("userId");
     this.props.history.push("/");
   };
 
   render() {
+    const username = localStorage.getItem("username");
+
     return (
-      <div className="header">
-        {/* Shows Qkart title image */}
-        <div className="header-title" onClick={this.root}>
-          <img src="icon.svg" alt="QKart-icon"></img>
+      <header className="header">
+        {/* Shows Qkart title image & Brand */}
+        <div className="header-brand-wrap" onClick={this.root}>
+          <div className="header-title">
+            <img src="/icon.svg" alt="QKart-icon" className="header-logo-img" />
+          </div>
+          <span className="header-badge">STORE</span>
         </div>
 
-        {this.props.children}
+        {/* Slot for search bar or custom actions */}
+        <div className="header-center">
+          {this.props.children}
+        </div>
 
-        {/* Display links based on if the user's logged in or not */}
+        {/* Display links based on if the user is logged in or not */}
         <div className="header-action">
-          {localStorage.getItem("username") ? (
-            <>
-              <img
-                src="avatar.png"
-                alt="profile"
-                className="profile-image"
-              ></img>
-
-              <div className="header-info">
-                {localStorage.getItem("username")}
+          {username ? (
+            <div className="header-user-section">
+              <div className="header-user-profile">
+                <img
+                  src="/avatar.png"
+                  alt="profile"
+                  className="profile-image"
+                />
+                <div className="header-user-details">
+                  <span className="user-greeting">Welcome,</span>
+                  <span className="header-info">{username}</span>
+                </div>
               </div>
 
-              <Button type="primary" onClick={this.logout}>
+              <Button
+                className="logout-btn"
+                danger
+                icon={<LogoutOutlined />}
+                onClick={this.logout}
+              >
                 Logout
               </Button>
-            </>
+            </div>
           ) : (
-            <>
-              <div className="header-link" onClick={this.explore}>
-                Explore
-              </div>
+            <div className="header-nav-links">
+              <button className="header-link" onClick={this.explore}>
+                <CompassOutlined /> Explore
+              </button>
 
-              <div className="header-link" onClick={this.login}>
-                Login
-              </div>
+              <button className="header-link-login" onClick={this.login}>
+                <UserOutlined /> Login
+              </button>
 
-              <div className="header-link">
-                <Button type="primary" onClick={this.register}>
-                  Register
-                </Button>
-              </div>
-            </>
+              <Button
+                type="primary"
+                className="header-register-btn"
+                onClick={this.register}
+              >
+                Register
+              </Button>
+            </div>
           )}
         </div>
-      </div>
+      </header>
     );
   }
 }

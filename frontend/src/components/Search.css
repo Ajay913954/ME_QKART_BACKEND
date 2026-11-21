@@ -1,22 +1,195 @@
-.search-container {
+.search-page-wrapper {
   display: flex;
-  justify-content: center;
-  width: 100%;
-  /* Reduce 70px of header and 100px of footer 
-  ** Make footer display at bottom even if less content on main page
-  ** eg: when api doesn't return products
-  */
-  min-height: calc(100vh - 170px);
-  margin-top: 70px;
-  padding: 1.5em 0em;
-}
-.search-cart {
-  margin-top: 70px;
-  background: #f6f8fa;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f8fafc;
 }
 
-/* Set width for the search bar */
-span.ant-input-search {
-  width: 30%;
+/* Search bar styling inside Header */
+.search-bar-wrap {
+  width: 100%;
+}
+
+.search-bar-wrap span.ant-input-search {
+  width: 100% !important;
+}
+
+.custom-search-input .ant-input {
+  border-radius: 9999px 0 0 9999px !important;
+  padding: 8px 18px !important;
+  font-size: 14px;
+  background: #f8fafc;
+  border-color: #cbd5e1 !important;
+}
+
+.custom-search-input .ant-input:focus {
+  background: #ffffff;
+}
+
+.custom-search-input .ant-btn {
+  border-radius: 0 9999px 9999px 0 !important;
+  height: 40px !important;
+  padding: 0 18px !important;
+  font-size: 15px;
+}
+
+/* Page Body */
+.search-page-body {
+  padding: 90px 4% 3rem 4%;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #ffffff;
+  padding: 12px 20px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+  margin-bottom: 1.5rem;
+}
+
+.filter-bar-header {
+  display: flex;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.category-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-pill {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-pill:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.category-pill.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.results-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  margin-left: auto;
+}
+
+/* Search Container & Grid */
+.search-container {
+  width: 100%;
+  min-height: 480px;
+}
+
+.products-grid-row {
+  margin: 0 !important;
+}
+
+.product-col {
+  display: flex;
+}
+
+/* Empty State */
+.empty-products-state {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 1rem;
+}
+
+.empty-products-state h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.empty-products-state p {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 1.5rem;
+}
+
+/* Loading State */
+.loading-state-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  gap: 16px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* Cart Column in Search */
+.search-cart-col {
+  position: relative;
+}
+
+.search-cart-sticky-box {
+  position: sticky;
+  top: 90px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.search-cart {
+  background: #ffffff;
+}
+
+@media (max-width: 992px) {
+  .search-cart-sticky-box {
+    position: static;
+    margin-top: 1.5rem;
+  }
 }
