@@ -1,4 +1,4 @@
-import { PlusCircleOutlined, StarFilled } from "@ant-design/icons";
+import { PlusCircleOutlined } from "@ant-design/icons";
 import { Button, Card, Rate } from "antd";
 import React from "react";
 import "./Product.css";
@@ -16,9 +16,8 @@ import "./Product.css";
 export default function Product(props) {
   return (
     <Card className="product" hoverable>
-      {/* Product Image Wrapper with Badge */}
+      {/* Product Image */}
       <div className="product-image-container">
-        <span className="product-badge">{props.product.category}</span>
         <img
           className="product-image"
           alt={props.product.name}
@@ -27,33 +26,29 @@ export default function Product(props) {
         />
       </div>
 
-      {/* Product Information */}
+      {/* Product Info */}
       <div className="product-info">
         <div className="product-info-text">
-          <div className="product-category">{props.product.category}</div>
           <div className="product-title" title={props.product.name}>
             {props.product.name}
           </div>
+          <div className="product-category">{props.product.category}</div>
         </div>
 
-        {/* Product Pricing & Actions */}
+        {/* Pricing and Actions */}
         <div className="product-info-utility">
-          <div className="product-pricing-row">
-            <div className="product-cost">₹{props.product.cost}</div>
-            <div className="product-rating-wrap">
-              <Rate
-                className="product-rating"
-                disabled={true}
-                defaultValue={props.product.rating}
-              />
-              <span className="product-rating-num">
-                {props.product.rating}.0
-              </span>
-            </div>
+          <div className="product-cost">₹{props.product.cost}</div>
+
+          <div className="product-rating-row">
+            <Rate
+              className="product-rating"
+              disabled={true}
+              defaultValue={props.product.rating}
+            />
+            <span className="product-rating-count">({props.product.rating})</span>
           </div>
 
           <Button
-            shape="round"
             type="primary"
             className="product-add-btn"
             icon={<PlusCircleOutlined />}

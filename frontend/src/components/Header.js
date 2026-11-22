@@ -1,4 +1,4 @@
-import { LogoutOutlined, CompassOutlined, UserOutlined } from "@ant-design/icons";
+import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React from "react";
 import "./Header.css";
@@ -34,57 +34,47 @@ export default class Header extends React.Component {
 
     return (
       <header className="header">
-        {/* Shows Qkart title image & Brand */}
-        <div className="header-brand-wrap" onClick={this.root}>
-          <div className="header-title">
-            <img src="/icon.svg" alt="QKart-icon" className="header-logo-img" />
-          </div>
-          <span className="header-badge">STORE</span>
+        {/* QKart Logo */}
+        <div className="header-brand" onClick={this.root}>
+          <img src="/icon.svg" alt="QKart-icon" className="header-logo-img" />
         </div>
 
-        {/* Slot for search bar or custom actions */}
-        <div className="header-center">
+        {/* Search Bar / Center content */}
+        <div className="header-search">
           {this.props.children}
         </div>
 
-        {/* Display links based on if the user is logged in or not */}
-        <div className="header-action">
+        {/* Right Action Links */}
+        <div className="header-actions">
           {username ? (
-            <div className="header-user-section">
-              <div className="header-user-profile">
-                <img
-                  src="/avatar.png"
-                  alt="profile"
-                  className="profile-image"
-                />
-                <div className="header-user-details">
-                  <span className="user-greeting">Welcome,</span>
-                  <span className="header-info">{username}</span>
-                </div>
+            <div className="header-user">
+              <div className="user-info">
+                <img src="/avatar.png" alt="profile" className="profile-image" />
+                <span className="username">{username}</span>
               </div>
 
               <Button
+                size="middle"
                 className="logout-btn"
-                danger
-                icon={<LogoutOutlined />}
                 onClick={this.logout}
+                icon={<LogoutOutlined />}
               >
                 Logout
               </Button>
             </div>
           ) : (
-            <div className="header-nav-links">
-              <button className="header-link" onClick={this.explore}>
-                <CompassOutlined /> Explore
+            <div className="header-links">
+              <button className="nav-btn" onClick={this.explore}>
+                Explore
               </button>
 
-              <button className="header-link-login" onClick={this.login}>
+              <button className="nav-btn" onClick={this.login}>
                 <UserOutlined /> Login
               </button>
 
               <Button
                 type="primary"
-                className="header-register-btn"
+                className="register-btn"
                 onClick={this.register}
               >
                 Register

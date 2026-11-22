@@ -515,9 +515,11 @@ class Checkout extends React.Component {
    */
   render() {
     const radioStyle = {
-      display: "block",
-      height: "30px",
-      lineHeight: "30px",
+      display: "flex",
+      alignItems: "center",
+      height: "auto",
+      minHeight: "48px",
+      lineHeight: "1.5",
     };
 
     return (
@@ -527,10 +529,10 @@ class Checkout extends React.Component {
 
         {/* Display Checkout page content */}
         <div className="checkout-container">
-          <Row>
+          <Row gutter={[24, 24]}>
             {/* Display checkout instructions */}
 
-            <Col xs={{ span: 24, order: 2 }} md={{ span: 18, order: 1 }}>
+            <Col xs={{ span: 24, order: 2 }} lg={{ span: 16, order: 1 }}>
               <div className="checkout-shipping">
                 <h1 style={{ marginBottom: "-10px" }}>Shipping</h1>
 
@@ -672,7 +674,7 @@ class Checkout extends React.Component {
 
             <Col
               xs={{ span: 24, order: 1 }}
-              md={{ span: 6, order: 2 }}
+              lg={{ span: 8, order: 2 }}
               className="checkout-cart"
             >
               <div>

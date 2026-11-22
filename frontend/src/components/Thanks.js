@@ -1,4 +1,4 @@
-import { CheckCircleFilled, ArrowRightOutlined, ShoppingOutlined, WalletOutlined } from "@ant-design/icons";
+import { CheckCircleFilled, ShoppingOutlined, WalletOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import React from "react";
 import { Link, withRouter } from "react-router-dom";

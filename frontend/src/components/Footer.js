@@ -17,7 +17,7 @@ export default class Footer extends React.Component {
                 doorstep express delivery, and verified quality.
               </p>
               <div className="footer-trust-pill">
-                🔒 100% Secure SSL Payments & Guaranteed Quality
+                <span role="img" aria-label="secure lock">🔒</span> 100% Secure SSL Payments & Guaranteed Quality
               </div>
             </div>
 

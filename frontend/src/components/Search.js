@@ -1,4 +1,4 @@
-import { FilterOutlined, SearchOutlined, ShoppingBagOutlined, ReloadOutlined } from "@ant-design/icons";
+import { FilterOutlined, ReloadOutlined } from "@ant-design/icons";
 import { Input, message, Row, Col, Spin, Button } from "antd";
 import React from "react";
 import { withRouter } from "react-router-dom";
@@ -143,8 +143,13 @@ class Search extends React.Component {
   }
 
   getProductElement = (product) => {
+    const colProps =
+      this.state.loggedIn && this.products.length
+        ? { xs: 24, sm: 12, md: 12, lg: 8, xl: 8 }
+        : { xs: 24, sm: 12, md: 8, lg: 6, xl: 6 };
+
     return (
-      <Col xs={24} sm={12} lg={8} xl={6} key={product._id} className="product-col">
+      <Col {...colProps} key={product._id} className="product-col">
         <Product
           product={product}
           addToCart={() => {
@@ -221,10 +226,6 @@ class Search extends React.Component {
                 span: this.state.loggedIn && this.products.length ? 16 : 24,
                 order: 1,
               }}
-              xl={{
-                span: this.state.loggedIn && this.products.length ? 17 : 24,
-                order: 1,
-              }}
             >
               <div className="search-container">
                 {this.state.loading ? (
@@ -233,14 +234,16 @@ class Search extends React.Component {
                     <p>Fetching catalog items...</p>
                   </div>
                 ) : this.state.filteredProducts.length > 0 ? (
-                  <Row gutter={[16, 24]} className="products-grid-row">
+                  <Row gutter={[16, 16]} className="products-grid-row">
                     {this.state.filteredProducts.map((product) =>
                       this.getProductElement(product)
                     )}
                   </Row>
                 ) : (
                   <div className="empty-products-state">
-                    <div className="empty-state-icon">🔍</div>
+                    <div className="empty-state-icon">
+                      <span role="img" aria-label="search">🔍</span>
+                    </div>
                     <h3>No products found</h3>
                     <p>We couldn't find anything matching your search query or category.</p>
                     <Button
@@ -263,7 +266,6 @@ class Search extends React.Component {
               <Col
                 xs={{ span: 24 }}
                 lg={{ span: 8, order: 2 }}
-                xl={{ span: 7, order: 2 }}
                 className="search-cart-col"
               >
                 <div className="search-cart-sticky-box">
